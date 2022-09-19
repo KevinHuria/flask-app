@@ -16,3 +16,7 @@ def jinja():
 @app.route("/about")
 def about():
     return "<h1>About!</h1>"
+
+@app.route("/sign-up")
+def sign_up():
+    return render_template("public/sign_up.html")
