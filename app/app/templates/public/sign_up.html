@@ -11,6 +11,7 @@ sign up
             <hr>
             
             <form action="sign_up" method="POST">
+                {{form.hidden_tag()}}
                 <div class="form-group">
                     <label>Username</label>
                     <input class="form_control" type="text" name="username">
@@ -18,7 +19,7 @@ sign up
 
                 <div class="form-group">
                     <label>Email</label>
-                    <input class="form_control" type="email" name="email">
+                    <input class="form_control" type="email"name="email">
                 </div>
 
                 <div class="form-group">
