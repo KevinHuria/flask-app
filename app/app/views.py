@@ -1,7 +1,8 @@
 from app import app
-from flask import render_template, request, redirect
+from flask import render_template,url_for, request, redirect
+from forms import SignUpform,LogInform
 
-
+app.config['SECRET KEY'] = 'c8bb8624813e116b58652015766ac934'
 @app.route("/")
 def index():
     return render_template("public/index.html")
@@ -21,6 +22,7 @@ def about():
 
 @app.route("/sign-up", methods=["GET", "POST"])
 def sign_up():
+    form =SignUpform()
     if request.method == "POST":
         req = request.form
         username = req["username"]
@@ -30,7 +32,12 @@ def sign_up():
         print(username, email, password)
 
         return redirect(request.url)
-    return render_template("public/sign_up.html")
+    return render_template("public/sign_up.html",form =form)
+
+@app.route('/logIn')
+def LogIn():
+    form=LogInform()
+    return render_template('public/login.html', form =form)
 
 @app.route("/profile/<username>")
 def profile(username):
