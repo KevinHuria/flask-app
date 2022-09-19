@@ -1,5 +1,3 @@
-from crypt import methods
-from wsgiref.util import request_uri
 from app import app
 
 from flask import render_template, request, redirect
