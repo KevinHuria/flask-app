@@ -1,5 +1,5 @@
-*Installation*
-To install :
-$ pip install flask
-$ pip flask install wtf_flask
+<h1>*Installation*</h1>
+<p>To install :</p>
+<p>$ pip install flask</p>
+<p>$ pip flask install wtf_flask</p>
 
