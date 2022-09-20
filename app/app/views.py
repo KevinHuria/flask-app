@@ -1,6 +1,5 @@
 from app import app
 from flask import render_template,url_for, request, redirect
-from forms import SignUpform,LogInform
 
 app.config['SECRET KEY'] = 'c8bb8624813e116b58652015766ac934'
 @app.route("/")
