@@ -10,7 +10,7 @@ sign up
             <h1>Sign Up</h1>
             <hr>
             
-            <form action="sign_up" method="POST">
+            <form action="/sign-up" method="POST">
                 {{form.hidden_tag()}}
                 <fieldset class="form-group">
                     <legend class="border_bottom mb-4">Sign Up</legend>
@@ -41,7 +41,7 @@ sign up
 <div class="border-top pt-3">
     <small class="text-muted">
         Already Have an Account?
-        <a href="{{ url_for('login') }}">Sign In</a>
+        <a href="{{url_for('logIn')}}">Sign In</a>
     </small>
 
 </div>
