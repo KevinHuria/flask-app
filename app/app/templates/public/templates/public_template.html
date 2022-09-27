@@ -55,7 +55,7 @@
 
         <main>
             <!--ADDING flashed messages upon sign up-->
-            {%with messages =get_flashed_messages(with categories=true%}
+            {%with messages =get_flashed_messages(with categories=true)%}
              {%if messages%}
               {%for category, message in messages %}
                <div class="alert alert-{{category}}">
