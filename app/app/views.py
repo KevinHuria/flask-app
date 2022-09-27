@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template, url_for, redirect
+from flask import render_template, url_for, redirect, flash
 from app.forms import SignUpform, LogInform
 
 app.config['SECRET_KEY'] = '19a27057ac27ad42c9f047c62aeb6f15'
@@ -25,6 +25,10 @@ def about():
 @app.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
     form = SignUpform()
+    if form.validate_on_submit():
+        flash(f'Account created for {form.username.data}!','success')
+        ##Displays flash message upon form validation
+        return redirect(url_for('index'))
     return render_template("public/sign_up.html", form=form)
 
 
