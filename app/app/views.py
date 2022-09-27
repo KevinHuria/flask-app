@@ -40,7 +40,7 @@ def LogIn():
             flash("You have logged in!",'success')
             return redirect(url_for('index'))
         else:
-            
+            flash("LogIn Unsuccessful",'danger')
     return render_template('public/login.html', form=form)
 
 
