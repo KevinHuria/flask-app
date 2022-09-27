@@ -5,7 +5,7 @@ from wtforms.validators import InputRequired, Length, email_validator, Email, Eq
 
 
 class SignUpform(FlaskForm):
-    username = StringField('username',
+    username = StringField('Username',
                            validators=[InputRequired(), Length(min=2, max=25)])
     email = EmailField(
         'Email', validators=[
@@ -14,7 +14,7 @@ class SignUpform(FlaskForm):
     )
     password = PasswordField('Password',
                              validators=[InputRequired(), Length(min=8)])
-    confirm_password = PasswordField('Password',
+    confirm_password = PasswordField('Confirm Password',
                                      validators=[InputRequired(), EqualTo('password')])
     submit = SubmitField('Sign Up')
 
