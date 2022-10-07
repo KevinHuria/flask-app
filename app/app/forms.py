@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import (StringField, SubmitField, EmailField,
                      PasswordField, BooleanField)
-from wtforms.validators import InputRequired, Length, email_validator, Email, EqualTo
-
+from wtforms.validators import InputRequired, Length,ValidationError, email_validator, Email, EqualTo
+from app.models import User
 
 class SignUpform(FlaskForm):
     username = StringField('Username',
@@ -18,6 +18,15 @@ class SignUpform(FlaskForm):
                                      validators=[InputRequired(), EqualTo('password')])
     submit = SubmitField('Sign Up')
 
+    def validate_uname(self , uname) :
+        present = User.query.filter_by(uname = uname.data).first()
+        if present:
+            raise ValidationError("This username has already been taken, please choose a different one.")
+    
+    def validate_email(self , email) :
+        present = User.query.filter_by(email = email.data).first()
+        if present:
+            raise ValidationError("This email has already been registered with us, please enter a different one.")
 
 class LogInform(FlaskForm):
     email = EmailField(
