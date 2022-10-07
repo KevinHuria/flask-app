@@ -1,13 +1,7 @@
 # models.py
-from app import app
-from app import db, login_manager
+from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
-
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
-
+db = SQLAlchemy()
 
 class User(UserMixin, db.Model):
     # primary keys are required by SQLAlchemy
@@ -23,4 +17,4 @@ class User(UserMixin, db.Model):
             raise NotImplementedError('No `id` attribute - override `get_id`')
 
     def __repr__(self):
-        return 'User(%s , %s)' % (self.uname, self.email)
+        return 'User(%s , %s)' % (self.name, self.email)
