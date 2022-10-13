@@ -2,7 +2,7 @@ from tkinter.tix import Form
 from app import app
 from flask import render_template, url_for, redirect, flash, request
 from app.forms import SignUpform, LogInform
-from app.models import User,db
+from app.models import User, db
 from app import app, db, pwd
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -44,13 +44,13 @@ def LogIn():
         return redirect(url_for('index'))
         form = LogInForm(request.form)
         if request.method == "POST" and form.validate():
-            user = User.query.filter_by(uname=form.username.data).first()
+              user = User.query.filter_by(uname=form.username.data).first()
         if user and pwd.check_password_hash(user.password, form.password.data):
-                login_user(user)
-                flash("Welcome, %s!" % (form.username.data), "success")
-                return redirect(url_for('index'))
-    else:
-        flash("LogIn Unsuccessful", 'danger')
+                    login_user(user)
+                    flash("Welcome, %s!" % (form.username.data), "success")
+                    return redirect(url_for('index'))
+        else:
+            flash("LogIn Unsuccessful", 'danger')
     return redirect(url_for('LogIn'))
     return render_template("public/login.html", form=form)
 
